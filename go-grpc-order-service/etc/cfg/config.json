@@ -1,0 +1,16 @@
+{
+  "Config": {
+    "Port": ":50053",
+    "JwtSecret": "secret"
+  },
+  "SQL": {
+    "Host": "localhost",
+    "Username": "root",
+    "Password": "password",
+    "Port": "3306",
+    "Database": "grpc-order-service"
+  },
+  "ServiceUrl": {
+    "ProductUrl": "localhost:50052"
+  }
+}

@@ -1,0 +1,256 @@
+definitions:
+  entity.CreateOrderParam:
+    properties:
+      productId:
+        type: integer
+      quantity:
+        type: integer
+    required:
+    - productId
+    - quantity
+    type: object
+  entity.CreateProductParam:
+    properties:
+      name:
+        type: string
+      price:
+        type: integer
+    required:
+    - name
+    - price
+    type: object
+  entity.CreateUserParam:
+    properties:
+      email:
+        type: string
+      password:
+        type: string
+    required:
+    - email
+    - password
+    type: object
+  entity.LoginUserParam:
+    properties:
+      email:
+        type: string
+      password:
+        type: string
+    required:
+    - email
+    - password
+    type: object
+  entity.Meta:
+    properties:
+      code:
+        type: integer
+      is_error:
+        type: boolean
+      message:
+        type: string
+    type: object
+  entity.Response:
+    properties:
+      data:
+        type: object
+      meta:
+        $ref: '#/definitions/entity.Meta'
+        type: object
+    type: object
+info:
+  contact:
+    email: rakhmadgiffari14@gmail.com
+    name: Rakhmad Giffari Nurfadhilah
+    url: https://fadhilmail.tech/
+  license: {}
+paths:
+  /api/v1/auth/login:
+    post:
+      description: Login User
+      parameters:
+      - description: user info
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/entity.LoginUserParam'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entity.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entity.Response'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/entity.Response'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/entity.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/entity.Response'
+      summary: Login User
+      tags:
+      - Auth
+  /api/v1/auth/register:
+    post:
+      description: Register New User
+      parameters:
+      - description: user info
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/entity.CreateUserParam'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entity.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entity.Response'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/entity.Response'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/entity.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/entity.Response'
+      summary: Register User
+      tags:
+      - Auth
+  /api/v1/order:
+    post:
+      description: Create New Order
+      parameters:
+      - description: order info
+        in: body
+        name: order
+        required: true
+        schema:
+          $ref: '#/definitions/entity.CreateOrderParam'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entity.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entity.Response'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/entity.Response'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/entity.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/entity.Response'
+      security:
+      - BearerAuth: []
+      summary: Create Order
+      tags:
+      - Order
+  /api/v1/product:
+    post:
+      description: Create New Product
+      parameters:
+      - description: product info
+        in: body
+        name: product
+        required: true
+        schema:
+          $ref: '#/definitions/entity.CreateProductParam'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entity.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entity.Response'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/entity.Response'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/entity.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/entity.Response'
+      security:
+      - BearerAuth: []
+      summary: Create Product
+      tags:
+      - Product
+  /api/v1/product/{id}:
+    get:
+      description: Find One Product
+      parameters:
+      - description: product id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entity.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entity.Response'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/entity.Response'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/entity.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/entity.Response'
+      security:
+      - BearerAuth: []
+      summary: Find One Product
+      tags:
+      - Product
+securityDefinitions:
+  BearerAuth:
+    in: header
+    name: Authorization
+    type: apiKey
+swagger: "2.0"

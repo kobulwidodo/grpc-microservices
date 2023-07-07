@@ -1,0 +1,13 @@
+{
+  "Config": {
+    "Port": ":50051",
+    "JwtSecret": "secret"
+  },
+  "SQL": {
+    "Host": "localhost",
+    "Username": "root",
+    "Password": "password",
+    "Port": "3306",
+    "Database": "grpc-auth-service"
+  }
+}

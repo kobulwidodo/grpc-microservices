@@ -1,0 +1,33 @@
+{
+  "Meta": {
+    "Title": "Golang GRPC Microservice",
+    "Description": "This is Golang GRPC Microservice",
+    "Host": "localhost:8080",
+    "Basepath": "/",
+    "Version": ""
+  },
+  "Gin": {
+    "Host": "localhost",
+    "Port": "8080",
+    "Mode": "debug",
+    "Timeout": "1000s",
+    "ShutdownTimeout": "10s",
+    "LogRequest": "true",
+    "LogResponse": "true",
+    "CORS": {
+      "Mode": "allowall"
+    },
+    "Meta": {
+      "Title": "Golang GRPC Microservice",
+      "Description": "This is Golang GRPC Microservice",
+      "Host": "localhost:8080",
+      "Basepath": "/",
+      "Version": ""
+    }
+  },
+  "ServiceUrl": {
+    "AuthServiceUrl": "localhost:50051",
+    "ProductServiceUrl": "localhost:50052",
+    "OrderServiceUrl": "localhost:50053"
+  }
+}
